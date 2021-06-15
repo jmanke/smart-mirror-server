@@ -83,7 +83,6 @@ class GoogleApi {
 
   async verifyAuthorized() {
     if (!this.oauth2Client && !this.isAuthorizing) {
-      console.log('AUTHORIZING');
       await this.authorize();
     }
   }
