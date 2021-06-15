@@ -8,4 +8,4 @@ ls.stdout.on('data', (data) => {
   console.log(data.toString());
 });
 
-console.log('done');
+console.log('done!');
