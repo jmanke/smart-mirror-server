@@ -37,7 +37,6 @@ async function pullFromGit() {
 async function autoUpdater() {
   await new Promise((resolve, reject) => {
     execCommand('git fetch && git show-ref --head', (err, out) => {
-      console.log('check');
       if (err) {
         reject();
         return;
