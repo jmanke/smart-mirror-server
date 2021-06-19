@@ -36,6 +36,7 @@ async function pullFromGit() {
 
 async function autoUpdater() {
   await new Promise((resolve, reject) => {
+    console.log('test check');
     execCommand('git fetch && git show-ref --head', (err, out) => {
       if (err) {
         reject();
@@ -78,7 +79,6 @@ async function autoUpdater() {
             }
           }
 
-          console.log('test');
           monitor = startServer();
           monitor.on('start', () => {
             console.log('restarted server');
