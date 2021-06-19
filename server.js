@@ -71,3 +71,5 @@ async function getSettings() {
 async function updateSettings(settings) {
   return fs.writeFile(settingsPath, JSON.stringify(settings));
 }
+
+console.log('test 1');
