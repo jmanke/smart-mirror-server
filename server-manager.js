@@ -78,6 +78,7 @@ async function autoUpdater() {
             }
           }
 
+          console.log('test');
           monitor = startServer();
           monitor.on('start', () => {
             console.log('restarted server');
