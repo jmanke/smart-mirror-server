@@ -2,9 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const GoogleApi = require('./google-api');
 const fs = require('fs').promises;
+const LocationApi = require('./location-api');
 
 const port = 5001;
 const gapi = new GoogleApi();
+const locationApi = new LocationApi();
 const settingsPath = `${__dirname}/app-settings.json`;
 
 const server = express();
@@ -25,6 +27,15 @@ server.get('/gapi/tasks', async (req, res) => {
   try {
     const events = await gapi.getTasks(req.query);
     res.json(events);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+server.get('/location/current', async (req, res) => {
+  try {
+    const currentLocation = await locationApi.currentLocation();
+    res.json(currentLocation);
   } catch (err) {
     res.json(err);
   }
