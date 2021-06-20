@@ -18,7 +18,7 @@ function execCommand(command, cb) {
 }
 
 function startServer() {
-  return forever.start('./server.js', { uid: 'server.js' });
+  return forever.start(`${__dirname}/server.js`, { uid: 'server.js' });
 }
 
 async function pullFromGit() {
