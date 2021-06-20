@@ -44,12 +44,13 @@ async function autoUpdater() {
         reject();
         return;
       }
-
+      console.log('auto updater 4');
       const heads = out
         .split('\n')
         .filter((h) => h.length)
         .map((h) => h.split(' ').reverse())
         .filter((h) => h.length === 2);
+      console.log('auto updater 5');
 
       const headMap = new Map();
       heads.forEach((h) => headMap.set(h[0], h[1]));
@@ -57,6 +58,7 @@ async function autoUpdater() {
       const currHead = headMap.get('HEAD');
       const remoteHead = headMap.get('refs/remotes/origin/master');
 
+      console.log('auto updater 6');
       if (!currHead || !remoteHead) {
         return;
       }
