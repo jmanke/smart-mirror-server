@@ -35,22 +35,18 @@ async function pullFromGit() {
 }
 
 async function autoUpdater() {
-  console.log('auto updater 1');
   await new Promise((resolve, reject) => {
-    console.log('auto updater 2');
     execCommand('git fetch && git show-ref --head', (err, out) => {
-      console.log('auto updater 3');
       if (err) {
+        console.error(err);
         reject();
         return;
       }
-      console.log('auto updater 4');
       const heads = out
         .split('\n')
         .filter((h) => h.length)
         .map((h) => h.split(' ').reverse())
         .filter((h) => h.length === 2);
-      console.log('auto updater 5');
 
       const headMap = new Map();
       heads.forEach((h) => headMap.set(h[0], h[1]));
@@ -58,7 +54,6 @@ async function autoUpdater() {
       const currHead = headMap.get('HEAD');
       const remoteHead = headMap.get('refs/remotes/origin/master');
 
-      console.log('auto updater 6');
       if (!currHead || !remoteHead) {
         return;
       }
@@ -105,11 +100,8 @@ async function autoUpdater() {
   }, 1000 * 10);
 }
 
-console.log('1');
 let monitor = startServer();
-console.log('2');
 monitor.on('start', () => {
-  console.log('3');
   autoUpdater();
   exec(
     'unclutter -idle 0.1 & firefox -kiosk https://smart-mirror-web.herokuapp.com/'
