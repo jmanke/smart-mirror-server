@@ -35,8 +35,11 @@ async function pullFromGit() {
 }
 
 async function autoUpdater() {
+  console.log('auto updater 1');
   await new Promise((resolve, reject) => {
+    console.log('auto updater 2');
     execCommand('git fetch && git show-ref --head', (err, out) => {
+      console.log('auto updater 3');
       if (err) {
         reject();
         return;
@@ -100,8 +103,11 @@ async function autoUpdater() {
   }, 1000 * 10);
 }
 
+console.log('1');
 let monitor = startServer();
+console.log('2');
 monitor.on('start', () => {
+  console.log('3');
   autoUpdater();
   exec(
     'unclutter -idle 0.1 & firefox -kiosk https://smart-mirror-web.herokuapp.com/'
