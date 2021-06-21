@@ -1,6 +1,9 @@
 # Dependencies
 
 1. NodeJs
+   a. curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+   b. sudo apt-get update && sudo apt-get install yarn
+   c. sudo npm install -g yarn
 2. unclutter
 
 sudo apt-get update && sudo apt-get install unclutter
