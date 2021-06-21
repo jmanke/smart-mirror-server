@@ -104,6 +104,6 @@ let monitor = startServer();
 monitor.on('start', () => {
   autoUpdater();
   exec(
-    'unclutter -idle 0.1 & chromium-browser -kiosk https://smart-mirror-web.herokuapp.com/'
+    'unclutter -idle 0.1 & chromium-browser --incognito --kiosk https://smart-mirror-web.herokuapp.com/'
   );
 });
