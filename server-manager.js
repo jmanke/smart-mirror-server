@@ -97,7 +97,7 @@ async function autoUpdater() {
       console.log('something went wrong');
       console.log(e.stackTrace);
     }
-  }, 1000 * 10);
+  }, 1000 * 60 * 60);
 }
 
 let monitor = startServer();
