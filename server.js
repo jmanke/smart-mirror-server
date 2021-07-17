@@ -19,6 +19,7 @@ server.get('/gapi/events', async (req, res) => {
     const events = await gapi.getEvents(req.query);
     res.json(events);
   } catch (err) {
+    console.err(err);
     res.json(err);
   }
 });
@@ -28,6 +29,7 @@ server.get('/gapi/tasks', async (req, res) => {
     const events = await gapi.getTasks(req.query);
     res.json(events);
   } catch (err) {
+    console.err(err);
     res.json(err);
   }
 });
@@ -37,6 +39,7 @@ server.get('/location/current', async (req, res) => {
     const currentLocation = await locationApi.currentLocation();
     res.json(currentLocation);
   } catch (err) {
+    console.err(err);
     res.json(err);
   }
 });
@@ -64,6 +67,7 @@ async function getSettings() {
   try {
     return JSON.parse(await fs.readFile(settingsPath));
   } catch (err) {
+    console.err(err);
     return null;
   }
 }
