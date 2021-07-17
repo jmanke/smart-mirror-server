@@ -23,7 +23,7 @@ function startServer() {
 
 async function pullFromGit() {
   return new Promise((resolve, reject) => {
-    execCommand('git pull', (err, out) => {
+    execCommand('git pull && yarn install', (err, out) => {
       if (err) {
         reject();
       }
