@@ -3,10 +3,12 @@ const cors = require('cors');
 const GoogleApi = require('./google-api');
 const fs = require('fs').promises;
 const LocationApi = require('./location-api');
+const NewsApi = require('./news-api');
 
 const port = 5001;
 const gapi = new GoogleApi();
 const locationApi = new LocationApi();
+const newsApi = new NewsApi();
 const settingsPath = `${__dirname}/app-settings.json`;
 
 const server = express();
@@ -19,7 +21,7 @@ server.get('/gapi/events', async (req, res) => {
     const events = await gapi.getEvents(req.query);
     res.json(events);
   } catch (err) {
-    console.err(err);
+    console.error(err);
     res.json(err);
   }
 });
@@ -29,7 +31,7 @@ server.get('/gapi/tasks', async (req, res) => {
     const events = await gapi.getTasks(req.query);
     res.json(events);
   } catch (err) {
-    console.err(err);
+    console.error(err);
     res.json(err);
   }
 });
@@ -39,7 +41,17 @@ server.get('/location/current', async (req, res) => {
     const currentLocation = await locationApi.currentLocation();
     res.json(currentLocation);
   } catch (err) {
-    console.err(err);
+    console.error(err);
+    res.json(err);
+  }
+});
+
+server.get('/news/top', async (req, res) => {
+  try {
+    const newsResponse = await newsApi.getTopNews(req.query);
+    res.json(newsResponse);
+  } catch (err) {
+    console.error(err);
     res.json(err);
   }
 });
@@ -67,7 +79,7 @@ async function getSettings() {
   try {
     return JSON.parse(await fs.readFile(settingsPath));
   } catch (err) {
-    console.err(err);
+    console.error(err);
     return null;
   }
 }
