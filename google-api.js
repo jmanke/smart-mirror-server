@@ -9,7 +9,7 @@ const destroyer = require('server-destroy');
 const { google } = require('googleapis');
 
 const scopes = [
-  'https://www.googleapis.com/auth/calendar.readonly',
+  'https://www.googleapis.com/auth/calendar.events.readonly',
   'https://www.googleapis.com/auth/tasks.readonly',
 ];
 
