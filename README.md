@@ -12,6 +12,7 @@ sudo apt-get update && sudo apt-get install unclutter
 
 1. yarn install
 2. node server-manager.js
+3. acquire https://newsapi.org/v2 api key. Create a .env file with `NEWS_API_KEY={key}`
 
 # Auto Start With Raspberry Pi
 

@@ -11,3 +11,12 @@ token.json
 credentials.json
 app-settings.json
 .env
+
+# yarn2
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
