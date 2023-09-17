@@ -44,7 +44,7 @@ server.get("/gapi/tasks", async (req, res) => {
 
 server.get("/location/current", async (req, res) => {
   try {
-    const settings = await this.getSettings();
+    const settings = await getSettings();
     const currentLocation = await locationApi.currentLocation(
       settings?.location
     );
